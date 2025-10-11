@@ -1,0 +1,13 @@
+{
+  "name": "supermercado-app",
+  "version": "1.0.0",
+  "description": "TP integrador Programación 1 - Supermercado con promociones",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node Main.js"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
