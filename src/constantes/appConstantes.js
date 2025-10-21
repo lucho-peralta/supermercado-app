@@ -1,5 +1,5 @@
 export const mensajesApp = {
-  entradaInvalida: 'Entrada inválida. Debe ingresar una de las opciones indicadas',
+  entradaInvalida: 'Entrada inválida.',
   saludoDespedida: 'Gracias por usar SupermercadoApp',
   idNoExiste: 'El id ingresado no corresponde a un producto del stock',
   nombreProductoConfirmado: 'Nombre del producto confirmado.',
@@ -12,6 +12,8 @@ export const mensajesApp = {
   opcionSalirVolver: ' (Ingrese "Salir" para cerrar la app o "volver" para regresar al menú)',
   categoriasDisponibles: 'Las categorias disponibles son: ',
   ingreseDatosNuevoProducto: 'Ingrese los datos que se solicitan a continuación',
+  precioConfirmado: 'Precio confirmado',
+  stockConfirmado: 'Stock confirmado',
 };
 
 export const textoPrompts = {
@@ -19,8 +21,8 @@ export const textoPrompts = {
   ingreseIdProducto: 'Ingrese el Id del producto que desea buscar: ',
   ingreseNombre: 'Ingrese el nombre del producto: ',
   seleccionarCategoria: 'Seleccione la categoria del producto: ',
-  ingresePrecio: 'Ingrese el precio del producto (sin el signo $): ',
-  ingreseStock: 'Ingrese el stocj del producto: ',
+  ingresePrecio: 'Ingrese el precio del producto (sin el signo $): ',5
+  ingreseStock: 'Ingrese el stock del producto: ',
 };
 
 export const menuApp = {

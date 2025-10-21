@@ -20,7 +20,7 @@ export function CrearListaOpcionesValidas(listaOpciones) {
 
 // -------
 
-export function ValidarEntrada(listaOpciones, opcionElegida) {
+export function ValidarOpcionSeleccionada(listaOpciones, opcionElegida) {
   const numero = Number(opcionElegida);
 
   if (Number.isInteger(numero) && listaOpciones.includes(numero)) {

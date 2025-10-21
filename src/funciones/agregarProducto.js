@@ -1,7 +1,7 @@
 //OPCION AGREGAR PRODUCTO.
 import { BuscarProductoPorNombre } from '../services/productoServices.js';
 import { AgregarProductoAlStock, GenerarID } from '../services/productoServices.js';
-import { CrearListaOpcionesValidas, ValidarEntrada, ImprimirOpciones } from '../utils/opciones.js';
+import { CrearListaOpcionesValidas, ValidarOpcionSeleccionada, ImprimirOpciones } from '../utils/opciones.js';
 import { FormatearEntrada } from '../utils/formatearInput.js';
 
 export function AgregarProducto(listaProductos, listaCategoria, textoPrompt, mensajes) {
@@ -88,7 +88,7 @@ export function IngresarCategoria(listaCategorias, textoPrompt, mensajes) {
   ImprimirOpciones(listaCategorias, mensajes);
 
   const opciones = CrearListaOpcionesValidas(listaCategorias.opciones);
-  console.log('Opciones válidas:', opciones);
+
   while (true) {
     const entrada = FormatearEntrada(textoPrompt.seleccionarOpcion, mensajes);
 
@@ -98,16 +98,15 @@ export function IngresarCategoria(listaCategorias, textoPrompt, mensajes) {
       return null;
     }
 
-    const opcionElegida = ValidarEntrada(opciones, entrada);
+    const opcionElegida = ValidarOpcionSeleccionada(opciones, entrada);
 
     if (opcionElegida === null) {
-      console.log(mensajes.opcionInvalida);
+      console.log(mensajes.entradaInvalida);
       continue;
     }
     const categoria = listaCategorias.opciones[opcionElegida - 1];
 
     console.log(mensajes.categoriaConfirmada);
-    console.log('Opción elegida final:', opcionElegida);
     return categoria;
   }
 }
@@ -128,7 +127,7 @@ export function IngresarPrecio(textoPrompt, mensajes) {
       console.log(mensajes.entradaInvalida);
       continue;
     }
-
+    console.log(mensajes.precioConfirmado);
     return precio;
   }
 }
@@ -149,7 +148,7 @@ export function IngresarStock(textoPrompt, mensajes) {
       console.log(mensajes.entradaInvalida);
       continue;
     }
-
+    console.log(mensajes.stockConfirmado);
     return stock;
   }
 }

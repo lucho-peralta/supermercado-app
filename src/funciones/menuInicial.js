@@ -1,7 +1,7 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
 
-import { ImprimirOpciones, CrearListaOpcionesValidas, ValidarEntrada } from '../utils/opciones.js';
+import { ImprimirOpciones, CrearListaOpcionesValidas, ValidarOpcionSeleccionada } from '../utils/opciones.js';
 import { FormatearEntrada } from '../utils/formatearInput.js';
 
 //MENU INICIO.
@@ -18,7 +18,7 @@ export function menuInicial(menu, textoPrompt, mensajes) {
       return 'salir';
     }
 
-    const eleccionUsuario = ValidarEntrada(listaOpciones, entrada);
+    const eleccionUsuario = ValidarOpcionSeleccionada(listaOpciones, entrada);
     if (eleccionUsuario === null) {
       console.log(mensajes.entradaInvalida);
       continue;
