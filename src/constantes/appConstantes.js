@@ -21,7 +21,7 @@ export const textoPrompts = {
   ingreseIdProducto: 'Ingrese el Id del producto que desea buscar: ',
   ingreseNombre: 'Ingrese el nombre del producto: ',
   seleccionarCategoria: 'Seleccione la categoria del producto: ',
-  ingresePrecio: 'Ingrese el precio del producto (sin el signo $): ',5
+  ingresePrecio: 'Ingrese el precio del producto (sin el signo $): ',
   ingreseStock: 'Ingrese el stock del producto: ',
 };
 
