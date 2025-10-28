@@ -1,12 +1,11 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
 
-import { GenerarListaDeProductosDisponibles } from '../../services/productoServices.js';
+import { GenerarListaDeProductosDisponibles, ActualizarStock } from '../../services/productoServices.js';
 import { GenerarDetalleVenta, RegistrarVenta } from '../../services/ventaServices.js';
 import { ValidarCaracteresAceptado } from '../../utils/validaciones.js';
 import { CrearListaOpcionesValidas, ImprimirOpcionesProductos } from '../../utils/opciones.js';
 import { AplicarPromocion } from '../../services/promocionServices.js';
-import { ImprimirTicket } from '../../utils/imprimirTicketVenta.js';
 
 export function ProcesarVenta(listaProductos, listaPromociones, promptsTexto, mensajesTexto) {
   const resultadoRegistracion = RegistrarProductos(listaProductos, promptsTexto, mensajesTexto);
@@ -17,12 +16,12 @@ export function ProcesarVenta(listaProductos, listaPromociones, promptsTexto, me
 
   const productosConPromociones = AplicarPromocion(listaPromociones, resultadoRegistracion);
   const detalleVenta = GenerarDetalleVenta(productosConPromociones);
-  console.log(detalleVenta);
+  console.log(detalleVenta); //eliminar, funcion bien.
   const pago = PedirPago(promptsTexto, mensajesTexto, detalleVenta.totalAPagar);
   const vuelto = GenerarVuelto(detalleVenta.totalAPagar, pago);
   const ventaConfirmada = RegistrarVenta(detalleVenta, pago, vuelto);
-  return ImprimirTicket(ventaConfirmada); // esto debería ir en el menu y no aca
-  //falta actualizar el stock;
+  const stockActualizado = ActualizarStock(listaProductos, mensajesTexto);
+  return ventaConfirmada;
 }
 
 //// ---------------------------------------

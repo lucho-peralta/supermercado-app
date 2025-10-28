@@ -19,8 +19,8 @@ export function ImprimirTicket(venta) {
     console.log(`Total a pagar: ${producto.subTotalAPagar}`);
   }
   console.log('-------------');
-  console.log(`TOTAL SIN DESCUENTO: ${venta.totalSinDescuento}`);
-  console.log(`TOTAL DESCUENTO: ${venta.totalDescuento}`);
+  console.log(`TOTAL SIN DESCUENTO: ${venta.subtotalSinDescuento}`);
+  console.log(`TOTAL DESCUENTO: ${venta.subtotalDescuento}`);
   console.log(`TOTAL A PAGAR: ${venta.totalAPagar}`);
   console.log(`PAGO:${venta.pago}`);
   console.log(`VUELTO:${venta.vuelto}`);

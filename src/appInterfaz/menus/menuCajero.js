@@ -6,6 +6,7 @@ import { stockProductos } from '../../basesDatos/stockProductos.js';
 import { promocionesVigentes } from '../../basesDatos/promociones.js';
 import { estructuraMenu } from '../../constantes/contenidoMenu.js';
 import { mensajes, textoPrompts } from '../../constantes/mensajesYPrompts.js';
+import { ImprimirTicket } from '../../utils/imprimirTicketVenta.js';
 
 //MENU INICIO.
 
@@ -60,8 +61,9 @@ export function MenuCajero(usuarioRol) {
         }
 
         if (resultadoOpcion) {
-          console.log('se tiene que mostrar el ticket?');
+          const ticket = ImprimirTicket(resultadoOpcion);
         }
+        break;
 
       default:
         console.log('default desde menu cajero');

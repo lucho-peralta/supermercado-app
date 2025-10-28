@@ -57,8 +57,20 @@ function BuscarIdMayor(listaProductos) {
   }
 }
 
-export function GenerarListaDeProductosDisponibles(listaProductos) {
+export function GenerarListaDeProductosDisponibles(listaProductos, mensajesTexto) {
   return listaProductos.filter((producto) => producto.stock > 0);
 }
 
-export function ActualizarStock(listaProductos, productoVendidos) {}
+export function ActualizarStock(listaProductos, productosVendidos) {
+  for (let i = 0; i < productosVendidos.length; i++) {
+    let productoVendido = productosVendidos[i];
+
+    let productoEnStock = listaProductos.find((producto) => producto.id === productoVendido.id);
+
+    if (productoEnStock) {
+      producto.stock -= productoVendido.cantidad;
+    } else {
+      console.log(mensajesTexto.productoEncontrado + '.' + `idProducto: ${productoVendido.id}`);
+    }
+  }
+}
