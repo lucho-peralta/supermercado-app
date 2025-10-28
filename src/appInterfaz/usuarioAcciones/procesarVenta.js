@@ -9,7 +9,6 @@ import { AplicarPromocion } from '../../services/promocionServices.js';
 
 export function ProcesarVenta(listaProductos, listaPromociones, promptsTexto, mensajesTexto) {
   const resultadoRegistracion = RegistrarProductos(listaProductos, promptsTexto, mensajesTexto);
-
   if (resultadoRegistracion === 'salir' || resultadoRegistracion === 'volver') {
     return resultadoRegistracion;
   }
@@ -20,7 +19,7 @@ export function ProcesarVenta(listaProductos, listaPromociones, promptsTexto, me
   const pago = PedirPago(promptsTexto, mensajesTexto, detalleVenta.totalAPagar);
   const vuelto = GenerarVuelto(detalleVenta.totalAPagar, pago);
   const ventaConfirmada = RegistrarVenta(detalleVenta, pago, vuelto);
-  const stockActualizado = ActualizarStock(listaProductos, mensajesTexto);
+  const stockActualizado = ActualizarStock(listaProductos, resultadoRegistracion, mensajesTexto);
   return ventaConfirmada;
 }
 

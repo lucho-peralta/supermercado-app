@@ -68,7 +68,7 @@ export function ActualizarStock(listaProductos, productosVendidos) {
     let productoEnStock = listaProductos.find((producto) => producto.id === productoVendido.id);
 
     if (productoEnStock) {
-      producto.stock -= productoVendido.cantidad;
+      productoEnStock.stock -= productoVendido.cantidad;
     } else {
       console.log(mensajesTexto.productoEncontrado + '.' + `idProducto: ${productoVendido.id}`);
     }
