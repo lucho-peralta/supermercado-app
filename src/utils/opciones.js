@@ -3,6 +3,20 @@ const prompt = promptSync();
 
 //FUNCIONES DEL MENU
 
+export function GenerarYMostrarOpcionesMenu(idMenu, contenidoMenu) {
+  const menuActual = buscarMenuPorId(idMenu, contenidoMenu);
+  ImprimirOpciones(menuActual);
+  const opcionesMenu = CrearListaOpcionesValidas(menuActual.opciones);
+  return opcionesMenu;
+}
+
+//------
+function buscarMenuPorId(idMenu, contenidoMenu) {
+  return contenidoMenu.find((elementoArr) => elementoArr.id === idMenu);
+}
+
+//------
+
 export function ImprimirOpciones(contenido) {
   console.log(contenido.titulo);
 
@@ -14,18 +28,12 @@ export function ImprimirOpciones(contenido) {
 // --------
 
 export function CrearListaOpcionesValidas(listaOpciones) {
-  const listaOpcionesValidas = listaOpciones.map((opcion, indice) => indice + 1);
+  const listaOpcionesValidas = listaOpciones.map((opcion, indice) => String(indice + 1));
   return listaOpcionesValidas;
 }
 
-// -------
-
-export function ValidarOpcionSeleccionada(listaOpciones, opcionElegida) {
-  const numero = Number(opcionElegida);
-
-  if (Number.isInteger(numero) && listaOpciones.includes(numero)) {
-    return numero;
-  }
-
-  return null;
+export function ImprimirOpcionesProductos(listaProductos) {
+  listaProductos.forEach((producto, indice) => {
+    console.log(`${indice + 1}: ${producto.nombre}`);
+  });
 }

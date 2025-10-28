@@ -11,6 +11,11 @@ export function BuscarProductoPorNombre(listaProductos, nombreProducto) {
   return producto;
 }
 
+export function TraerProductosPorCategoria(listaProductos, categoriaSeleccionada) {
+  let productos = listaProductos.filter((producto) => producto.categoria === categoriaSeleccionada);
+  return productos;
+}
+
 export function AgregarProductoAlStock(listaProductos, producto) {
   const productoNuevo = {
     id: producto.id,
@@ -25,12 +30,16 @@ export function AgregarProductoAlStock(listaProductos, producto) {
   return productoNuevo;
 }
 
+/* REVISAR esto porque el ID es igual a la longitud de la base de datos + 1, igual que en el 
+ id de la funcion GenerarId de de la venta. Modificarlas!!!
+ deberia ser idproducto = String(listaproductos.length + 1) */
+
 export function GenerarID(listaProductos) {
   const idMayor = BuscarIdMayor(listaProductos);
 
   const idGenerado = idMayor + 1;
 
-  return idGenerado;
+  return String(idGenerado);
 }
 
 function BuscarIdMayor(listaProductos) {
@@ -38,11 +47,18 @@ function BuscarIdMayor(listaProductos) {
     return 0;
   } else {
     return listaProductos.reduce((mayorValorId, producto) => {
+      const idActual = Number(producto.id);
       if (mayorValorId > producto.id) {
         return mayorValorId;
       } else {
-        return producto.id;
+        return idActual;
       }
     }, 0);
   }
 }
+
+export function GenerarListaDeProductosDisponibles(listaProductos) {
+  return listaProductos.filter((producto) => producto.stock > 0);
+}
+
+export function ActualizarStock(listaProductos, productoVendidos) {}
