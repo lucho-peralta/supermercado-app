@@ -61,7 +61,7 @@ export function GenerarListaDeProductosDisponibles(listaProductos, mensajesTexto
   return listaProductos.filter((producto) => producto.stock > 0);
 }
 
-export function ActualizarStock(listaProductos, productosVendidos) {
+export function ActualizarStock(listaProductos, productosVendidos, mensajesTextos) {
   for (let i = 0; i < productosVendidos.length; i++) {
     let productoVendido = productosVendidos[i];
 
@@ -70,7 +70,7 @@ export function ActualizarStock(listaProductos, productosVendidos) {
     if (productoEnStock) {
       productoEnStock.stock -= productoVendido.cantidad;
     } else {
-      console.log(mensajesTexto.productoEncontrado + '.' + `idProducto: ${productoVendido.id}`);
+      console.log(mensajesTextos.productoEncontrado + '.' + `idProducto: ${productoVendido.id}`);
     }
   }
 }

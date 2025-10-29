@@ -1,7 +1,8 @@
-import { detallesVentasEnBruto, ventasRegistradas } from '../basesDatos/ventas.js'; //pasarlo como argumento desde Menu cajero
+import { ventasRegistradas } from '../basesDatos/ventas.js'; //pasarlo como argumento desde Menu cajero
+// detallesVentasEnBruto
 
 export function GenerarDetalleVenta(productosRegistrados) {
-  const idOperacion = GenerarIdVenta(detallesVentasEnBruto);
+  const idOperacion = GenerarIdVenta(ventasRegistradas);
 
   const fechaOperacion = GenerarFecha();
   const productoConSubtotales = GenerarSubtotalesPorProducto(productosRegistrados);
@@ -35,24 +36,24 @@ export function RegistrarVenta(ventaConfirmada, pagoConfirmado, vueltoConfirmado
  id de la funcion GenerarId de productServices. Modificarlas!!!
  deberia ser idOperacion = String(detallesVentasEnBruto.length + 1)*/
 
-function GenerarIdVenta(listaVentasEnBruto) {
-  const idMayor = BuscarIdMayor(listaVentasEnBruto);
+function GenerarIdVenta(listaVentasRegistradas) {
+  const idMayor = BuscarIdMayor(listaVentasRegistradas);
 
   const idGenerado = idMayor + 1;
 
-  return idGenerado;
+  return String(idGenerado);
 }
 
-function BuscarIdMayor(listaVentasEnBruto) {
-  if (listaVentasEnBruto.length === 0) {
+function BuscarIdMayor(listaVentasRegistradas) {
+  if (listaVentasRegistradas.length === 0) {
     return 0;
   } else {
-    return listaVentasEnBruto.reduce((mayorValorId, venta) => {
+    return listaVentasRegistradas.reduce((mayorValorId, venta) => {
       const idActual = Number(venta.idOperacion);
-      if (mayorValorId > venta.idOperacion) {
+      if (mayorValorId > idActual) {
         return mayorValorId;
       } else {
-        return venta.idOperacion;
+        return idActual;
       }
     }, 0);
   }
