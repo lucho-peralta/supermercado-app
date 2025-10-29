@@ -35,7 +35,7 @@ export function MenuCajero(usuarioRol) {
           return 'volver';
         } else {
           console.log(mensajes.entradaInvalida);
-          continue; // no vuelve a mostrar el menú, solo reitera el prompt
+          continue;
         }
       }
 

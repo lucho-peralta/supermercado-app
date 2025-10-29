@@ -87,3 +87,35 @@ function GenerarTotalesVenta(productosConSubtotales) {
 
   return { totalVenta: totalVenta, totalDescuento: totalDescuento, totalAPagar: totalAPagar };
 }
+
+//// REPORTE ACUMULADO ANUAL
+
+export function ReporteVentasConsolidado(ventasRegistradas) {
+  const cantidadMesesActuales = CantidadDeMeses();
+
+  const cantidadDeVentasTotalesAnio = ventasRegistradas.length;
+  const ingresosTotalesAnio = CalcularIngresosTotalesAnio(ventasRegistradas);
+  const cantidadVentasPorMes = ventasTotalesAnio / cantidadMesesActuales;
+  const ingresosMensualesPromedio = IngresosTotalesAnio / cantidadMesesActuales;
+  const ticketPromedio = IngresosTotalesAnio / cantidadDeVentasTotalesAnio;
+
+  return {
+    cantidadDeVentasTotalesAnio: cantidadMesesActuales,
+    cantidadDeVentasTotalesAnio: cantidadDeVentasTotalesAnio,
+    IngresosTotalesAnio: ingresosTotalesAnio,
+    cantidadVentasPorMes: cantidadVentasPorMes,
+    ingresosMensualesPromedio: ingresosMensualesPromedio,
+    icketPromedio: ticketPromedio,
+  };
+}
+
+function CantidadDeMeses() {
+  const fechaActual = GenerarFecha();
+  return Number(fechaActual.mes);
+}
+
+function CalcularIngresosTotalesAnio(ventasRegistradas) {
+  return ventasRegistradas.reduce((acumulador, venta) => {
+    return acumulador + venta.totalAPagar;
+  }, 0);
+}
