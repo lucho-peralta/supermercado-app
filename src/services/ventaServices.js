@@ -1,7 +1,7 @@
 import { ventasRegistradas } from '../basesDatos/ventas.js'; //pasarlo como argumento desde Menu cajero
-// detallesVentasEnBruto
+import { GenerarFecha } from '../utils/generarFecha.js';
 
-export function GenerarDetalleVenta(productosRegistrados) {
+export function GenerarDetalleVenta(productosRegistrados, ventasRegistradas) {
   const idOperacion = GenerarIdVenta(ventasRegistradas);
 
   const fechaOperacion = GenerarFecha();
@@ -34,7 +34,7 @@ export function RegistrarVenta(ventaConfirmada, pagoConfirmado, vueltoConfirmado
 
 /* REVISAR esto porque el ID es igual a la longitud de la base de datos + 1, igual que en el 
  id de la funcion GenerarId de productServices. Modificarlas!!!
- deberia ser idOperacion = String(detallesVentasEnBruto.length + 1)*/
+ deberia ser idOperacion = String(ventasRegistradas.length + 1)*/
 
 function GenerarIdVenta(listaVentasRegistradas) {
   const idMayor = BuscarIdMayor(listaVentasRegistradas);
@@ -57,30 +57,6 @@ function BuscarIdMayor(listaVentasRegistradas) {
       }
     }, 0);
   }
-}
-
-function GenerarFecha() {
-  let ahora = new Date();
-
-  let dia = ahora.getDate();
-  if (dia < 10) {
-    dia = '0' + dia;
-  } else {
-    dia = String(dia);
-  }
-
-  let mes = ahora.getMonth() + 1;
-  if (mes < 10) {
-    mes = '0' + mes;
-  } else {
-    mes = String(mes);
-  }
-
-  let anio = String(ahora.getFullYear());
-
-  let fechaCompleta = `${dia}/${mes}/${anio}`;
-
-  return { dia, mes, anio, fechaCompleta };
 }
 
 function GenerarSubtotalesPorProducto(productosRegistrados) {

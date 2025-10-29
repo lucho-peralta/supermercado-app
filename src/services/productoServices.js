@@ -70,7 +70,7 @@ export function ActualizarStock(listaProductos, productosVendidos, mensajesTexto
     if (productoEnStock) {
       productoEnStock.stock -= productoVendido.cantidad;
     } else {
-      console.log(mensajesTextos.productoEncontrado + '.' + `idProducto: ${productoVendido.id}`);
+      console.log(mensajesTextos.productoNoEncontrado + '.' + `idProducto: ${productoVendido.id}`);
     }
   }
 }

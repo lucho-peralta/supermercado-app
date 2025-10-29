@@ -1,4 +1,4 @@
-export const detallesVentasEnBruto = [
+const detallesVentasEnBruto = [
   {
     idOperacion: '1',
     fechaOperacion: '11/11/2025',
@@ -79,8 +79,6 @@ export const ventasRegistradas = [
     pago: 12000,
     vuelto: 550,
   },
-
-  // VENTA 2: MARZO 2025 (Dto. x CATEGORÍA en Asado - 10%)
   {
     idOperacion: '2',
     fechaCompleta: '10/03/2025',
