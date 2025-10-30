@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { FormatoDecimalString } from './validacionesYFormatos.js';
 
 export function ImprimirTicket(venta) {
   console.log('-------------------------------');
@@ -12,25 +13,25 @@ export function ImprimirTicket(venta) {
     let producto = venta.productos[i];
 
     console.log(`${producto.nombre}`);
-    console.log(`${producto.cantidad} x ${producto.precio}`);
+    console.log(`${producto.cantidad} x ${FormatoDecimalString(producto.precio)}`);
 
     if (producto.tienePromocion) {
-      console.log(`Subtotal sin descuento: ${producto.subTotalSinDescuento}`);
-      console.log(`${producto.descripcionPromocion}: ${producto.montoDescuento}`);
-      console.log(`SubTotal a pagar: ${producto.subTotalAPagar}`);
+      console.log(`Subtotal sin descuento: ${FormatoDecimalString(producto.subTotalSinDescuento)}`);
+      console.log(`${producto.descripcionPromocion}: ${FormatoDecimalString(producto.montoDescuento)}`);
+      console.log(`SubTotal a pagar: ${FormatoDecimalString(producto.subTotalAPagar)}`);
     } else {
-      console.log(`Subtotal: ${producto.subTotalAPagar}`);
+      console.log(`Subtotal: ${FormatoDecimalString(producto.subTotalAPagar)}`);
     }
     console.log('-------------------------------');
   }
 
   if (venta.subtotalDescuento > 0) {
-    console.log(`TOTAL SIN DESCUENTO: ${venta.subtotalSinDescuento}`);
-    console.log(`TOTAL DESCUENTOs: ${venta.subtotalDescuento}`);
+    console.log(`TOTAL SIN DESCUENTO: ${FormatoDecimalString(venta.subtotalSinDescuento)}`);
+    console.log(`TOTAL DESCUENTOs: ${FormatoDecimal(venta.subtotalDescuento)}`);
   }
 
-  console.log(chalk.bold(`IMPORTE TOTAL: ${venta.totalAPagar}`));
-  console.log(`Recibimos: ${venta.pago}`);
-  console.log(`Vuelto: ${venta.vuelto}`);
+  console.log(chalk.bold(`IMPORTE TOTAL: ${FormatoDecimalString(venta.totalAPagar)}`));
+  console.log(`Recibimos: ${FormatoDecimalString(venta.pago)}`);
+  console.log(`Vuelto: ${FormatoDecimalString(venta.vuelto)}`);
   console.log('-------------------------------');
 }

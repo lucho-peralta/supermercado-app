@@ -3,7 +3,7 @@ const prompt = promptSync();
 import { BuscarProductoPorNombre } from '../../services/productoServices.js';
 import { GenerarID } from '../../services/productoServices.js';
 import { CrearListaOpcionesValidas, ImprimirOpciones } from '../../utils/opciones.js';
-import { ValidarCaracteresAceptado } from '../../utils/validaciones.js';
+import { ValidarCaracteresAceptado } from '../../utils/validacionesYFormatos.js';
 
 export function IngresarDatosNuevoProducto(listaProductos, listaCategoria, promptsTexto, mensajesTexto) {
   console.log(mensajesTexto.ingreseDatosNuevoProducto + '' + mensajesTexto.opcionSalirVolver);

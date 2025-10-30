@@ -1,6 +1,6 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
-import { ValidarCaracteresAceptado } from '../../utils/validaciones.js';
+import { ValidarCaracteresAceptado } from '../../utils/validacionesYFormatos.js';
 
 export function IngresarDNI(textoPrompt, mensaje) {
   while (true) {

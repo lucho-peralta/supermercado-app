@@ -2,7 +2,7 @@ import promptSync from 'prompt-sync';
 const prompt = promptSync();
 
 import { TraerProductoPorID, TraerProductosPorCategoria } from '../../services/productoServices.js';
-import { ValidarCaracteresAceptado } from '../../utils/validaciones.js';
+import { ValidarCaracteresAceptado } from '../../utils/validacionesYformatos.js';
 import { CrearListaOpcionesValidas, ImprimirOpciones } from '../../utils/opciones.js';
 
 // BUSCAR PRODUCTO POR ID

@@ -3,7 +3,7 @@ const prompt = promptSync();
 
 import { GenerarListaDeProductosDisponibles, ActualizarStock } from '../../services/productoServices.js';
 import { GenerarDetalleVenta, RegistrarVenta } from '../../services/ventaServices.js';
-import { ValidarCaracteresAceptado } from '../../utils/validaciones.js';
+import { ValidarCaracteresAceptado } from '../../utils/validacionesYFormatos.js';
 import { CrearListaOpcionesValidas, ImprimirOpcionesProductos } from '../../utils/opciones.js';
 import { AplicarPromocion } from '../../services/promocionServices.js';
 
@@ -171,6 +171,5 @@ function PedirPago(promptsTexto, mensajesTexto, totalAPagar) {
 
 function GenerarVuelto(totalVenta, pagoRealizado) {
   const vuelto = pagoRealizado - totalVenta;
-  console.log(`vuelto: ${vuelto}`);
   return vuelto;
 }

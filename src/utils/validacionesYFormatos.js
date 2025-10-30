@@ -80,3 +80,7 @@ function ValidarAlfanumerico(entrada) {
     return entrada;
   }
 }
+
+export function FormatoDecimalString(numero) {
+  return numero.toFixed(2);
+}

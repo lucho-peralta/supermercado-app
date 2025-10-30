@@ -5,6 +5,7 @@ import { estructuraMenu } from '../../constantes/contenidoMenu.js';
 import { ReporteVentasConsolidado } from '../../services/ventaServices.js';
 import { mensajes, textoPrompts } from '../../constantes/mensajesYPrompts.js';
 import { ventasRegistradas } from '../../basesDatos/ventas.js';
+import { ImprimirReporteConsolidado } from '../../utils/imprimirReportes.js';
 
 export function MenuGerenteVentas() {
   while (true) {
@@ -57,7 +58,7 @@ export function MenuGerenteVentas() {
         }
 
         if (resultadoOpcion) {
-          console.log(resultadoOpcion);
+          ImprimirReporteConsolidado(resultadoOpcion);
         }
         break;
 
