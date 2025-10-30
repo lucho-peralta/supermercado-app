@@ -4,7 +4,7 @@ const prompt = promptSync();
 import { IniciarSesion } from './src/appInterfaz/menus/Inicio.js';
 import { MenuIT } from './src/appInterfaz/menus/menuIT.js';
 import { MenuCajero } from './src/appInterfaz/menus/menuCajero.js';
-import { MenuGerenteComercial } from './src/appInterfaz/menus/menuGerenteComercial.js';
+import { MenuGerenteVentas } from './src/appInterfaz/menus/menuGerenteVentas.js';
 import { MenuResponsableInventario } from './src/appInterfaz/menus/menuResponsableInventario.js';
 import { mensajes } from './src/constantes/mensajesYPrompts.js';
 
@@ -36,7 +36,7 @@ function main() {
         break;
 
       case 'comercial':
-        opcionMenu = MenuGerenteComercial(rolUsuario);
+        opcionMenu = MenuGerenteVentas(rolUsuario);
         break;
 
       case 'IT':

@@ -1,7 +1,6 @@
-import { ventasRegistradas } from '../basesDatos/ventas.js'; //pasarlo como argumento desde Menu cajero
 import { GenerarFecha } from '../utils/generarFecha.js';
 
-export function GenerarDetalleVenta(productosRegistrados, ventasRegistradas) {
+export function GenerarDetalleVenta(productosRegistrados) {
   const idOperacion = GenerarIdVenta(ventasRegistradas);
 
   const fechaOperacion = GenerarFecha();
@@ -90,22 +89,21 @@ function GenerarTotalesVenta(productosConSubtotales) {
 
 //// REPORTE ACUMULADO ANUAL
 
-export function ReporteVentasConsolidado(ventasRegistradas) {
+export function ReporteVentasConsolidado(ventas) {
+  const cantidadDeVentasTotalesAnio = ventas.length;
   const cantidadMesesActuales = CantidadDeMeses();
 
-  const cantidadDeVentasTotalesAnio = ventasRegistradas.length;
-  const ingresosTotalesAnio = CalcularIngresosTotalesAnio(ventasRegistradas);
-  const cantidadVentasPorMes = ventasTotalesAnio / cantidadMesesActuales;
-  const ingresosMensualesPromedio = IngresosTotalesAnio / cantidadMesesActuales;
-  const ticketPromedio = IngresosTotalesAnio / cantidadDeVentasTotalesAnio;
+  const ingresosTotalesAnio = CalcularIngresosTotalesAnio(ventas);
+  const cantidadVentasPorMes = cantidadDeVentasTotalesAnio / cantidadMesesActuales;
+  const ingresosMensualesPromedio = ingresosTotalesAnio / cantidadMesesActuales;
+  const ticketPromedio = ingresosTotalesAnio / cantidadDeVentasTotalesAnio;
 
   return {
-    cantidadDeVentasTotalesAnio: cantidadMesesActuales,
     cantidadDeVentasTotalesAnio: cantidadDeVentasTotalesAnio,
     IngresosTotalesAnio: ingresosTotalesAnio,
     cantidadVentasPorMes: cantidadVentasPorMes,
     ingresosMensualesPromedio: ingresosMensualesPromedio,
-    icketPromedio: ticketPromedio,
+    ticketPromedio: ticketPromedio,
   };
 }
 
@@ -114,8 +112,8 @@ function CantidadDeMeses() {
   return Number(fechaActual.mes);
 }
 
-function CalcularIngresosTotalesAnio(ventasRegistradas) {
-  return ventasRegistradas.reduce((acumulador, venta) => {
+function CalcularIngresosTotalesAnio(ventas) {
+  return ventas.reduce((acumulador, venta) => {
     return acumulador + venta.totalAPagar;
   }, 0);
 }

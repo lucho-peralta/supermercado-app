@@ -3,12 +3,14 @@ export function AplicarPromocion(promociones, productos) {
     const producto = productos[i];
     const datosPromocion = DefinirDatosPromocion(promociones, producto);
 
-    if (datosPromocion.tipoPromocion !== null) {
+    if (datosPromocion.tienePromocion) {
+      producto.tienePromocion = true;
       producto.tipoPromocion = datosPromocion.tipoPromocion;
       producto.descripcionPromocion = datosPromocion.descripcionPromocion;
       producto.porcentajeDescuento = datosPromocion.porcentajeDescuento;
       producto.montoDescuento = datosPromocion.montoDescuento;
     } else {
+      producto.tienePromocion = false;
       producto.tipoPromocion = null;
       producto.descripcionPromocion = null;
       producto.porcentajeDescuento = 0;
@@ -24,6 +26,7 @@ function DefinirDatosPromocion(promociones, producto) {
   const promocionCantidad = BuscarPromocionPorCantidad(promociones, producto);
 
   let datosPromocion = {
+    tienePromocion: false,
     tipoPromocion: null,
     descripcionPromocion: null,
     porcentajeDescuento: 0,
@@ -34,9 +37,11 @@ function DefinirDatosPromocion(promociones, producto) {
     const porcentaje = promocionCategoria.descuento * 100;
     const montoDescuento = producto.precio * producto.cantidad * promocionCategoria.descuento;
     const descripcion = `Dto x Categoria (${porcentaje}%)`;
+    tienePromocion = true;
 
     datosPromocion = {
-      tipoPromocion: 'Categoria',
+      tienePromocion: true,
+      tipoPromocion: 'categoria',
       descripcionPromocion: descripcion,
       porcentajeDescuento: porcentaje,
       montoDescuento: montoDescuento,
@@ -50,7 +55,8 @@ function DefinirDatosPromocion(promociones, producto) {
     const descripcion = `Dto x Cantidad (${porcentaje}%)`;
 
     datosPromocion = {
-      tipoPromocion: 'Cantidad',
+      tienePromocion: true,
+      tipoPromocion: 'cantidad',
       descripcionPromocion: descripcion,
       porcentajeDescuento: porcentaje,
       montoDescuento: montoDescuento,
@@ -65,7 +71,7 @@ function BuscarPromocionPorCategoria(promociones, producto) {
   for (let i = 0; i < promociones.length; i++) {
     const promocion = promociones[i];
 
-    if (promocion.tipo === 'Categoria' && promocion.categoria === producto.categoria) {
+    if (promocion.tipo === 'categoria' && promocion.categoria.toLowerCase() === producto.categoria.toLowerCase()) {
       return promocion;
     }
   }
@@ -76,7 +82,11 @@ function BuscarPromocionPorCantidad(promociones, producto) {
   for (let i = 0; i < promociones.length; i++) {
     const promocion = promociones[i];
 
-    if (promocion.tipo === 'Cantidad' && promocion.producto === producto.nombre && producto.cantidad >= promocion.cantidadMinima) {
+    if (
+      promocion.tipo === 'cantidad' &&
+      promocion.producto.toLowerCase() === producto.nombre.toLowerCase() &&
+      producto.cantidad >= promocion.cantidadMinima
+    ) {
       return promocion;
     }
   }

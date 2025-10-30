@@ -5,7 +5,7 @@ import { estructuraMenu } from '../../constantes/contenidoMenu.js';
 import { GenerarYMostrarOpcionesMenu } from '../../utils/opciones.js';
 import { MenuResponsableInventario } from './menuResponsableInventario.js';
 import { MenuCajero } from './menuCajero.js';
-import { MenuGerenteComercial } from './menuGerenteComercial.js';
+import { MenuGerenteVentas } from './menuGerenteVentas.js';
 
 export function MenuIT(usuarioRol) {
   while (true) {
@@ -45,7 +45,7 @@ export function MenuIT(usuarioRol) {
         opcionMenu = MenuCajero(usuarioRol);
         break;
       case '3':
-        opcionMenu = MenuGerenteComercial(usuarioRol);
+        opcionMenu = MenuGerenteVentas(usuarioRol);
         break;
       default:
         console.log(mensajes.entradaInvalida);
