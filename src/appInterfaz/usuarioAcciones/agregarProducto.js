@@ -14,7 +14,7 @@ export function IngresarDatosNuevoProducto(listaProductos, listaCategoria, promp
   if (nombreConfirmado === 'salir') {
     return 'salir';
   } else if (nombreConfirmado === 'volver') {
-    return null;
+    return 'volver';
   }
 
   //Categoria
@@ -23,7 +23,7 @@ export function IngresarDatosNuevoProducto(listaProductos, listaCategoria, promp
   if (categoriaConfirmada === 'salir') {
     return 'salir';
   } else if (categoriaConfirmada === 'volver') {
-    return null;
+    return 'volver';
   }
 
   // precio
@@ -32,7 +32,7 @@ export function IngresarDatosNuevoProducto(listaProductos, listaCategoria, promp
   if (precioConfirmado === 'salir') {
     return 'salir';
   } else if (precioConfirmado === 'volver') {
-    return null;
+    return 'volver';
   }
   //stock
 
@@ -40,7 +40,7 @@ export function IngresarDatosNuevoProducto(listaProductos, listaCategoria, promp
   if (stockConfirmado === 'salir') {
     return 'salir';
   } else if (stockConfirmado === 'volver') {
-    return null;
+    return 'volver';
   }
 
   // generar id:
@@ -63,7 +63,7 @@ export function IngresarDatosNuevoProducto(listaProductos, listaCategoria, promp
 
 export function IngresarNombre(listaProductos, promptsTexto, mensajesTexto) {
   while (true) {
-    const entradaUsuario = prompt(promptsTexto.ingreseNombre, mensajesTexto).trim().toLowerCase();
+    const entradaUsuario = prompt(promptsTexto.ingreseNombreProducto, mensajesTexto).trim().toLowerCase();
 
     if (!entradaUsuario) {
       console.log(mensajesTexto.entradaInvalida);
