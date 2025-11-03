@@ -49,23 +49,36 @@ Archivo: `procesarVenta.js`
 
 Archivo: `ingresarProducto.js`
 
-### Alta de nuevo producto
+## Validaciones
 
-Función: `IngresarDatosNuevoProducto()`
+Función: ValidarCaracteresAceptado(entrada, tipo)
 
-Solicita:
+Tipos aceptados:
 
-- Nombre: no debe existir en la base.
-- Categoría: seleccionada por índice.
-- Precio: decimal válido.
-- Stock: entero positivo.
+'entero': números enteros positivos.
 
-Genera un ID único y devuelve el objeto completo.
+'decimal': números con decimales válidos.
 
-### Búsqueda de productos
+'alfanumerico': texto sin símbolos especiales.
+
+Cada flujo reconoce los comandos salir y volver en cualquier punto para abortar o retroceder sin romper el proceso.
+
+## Búsqueda de productos
 
 - Por ID: `BuscarProductoPorId()` → validación de existencia.
 - Por categoría: `BuscarProductoPorCategoria()` → muestra opciones y filtra.
+
+## Ticket de venta
+
+Generado al final del flujo de venta. Incluye:
+
+Fecha completa
+
+Productos vendidos con subtotales
+
+Total pagado y vuelto
+
+ID de operación
 
 ## Reportes
 
@@ -78,39 +91,3 @@ Calcula:
 - Ingresos totales
 - Promedio mensual
 - Ticket promedio
-
-Usa la fecha actual para determinar el mes y segmentar los datos.
-
-## Validaciones defensivas
-
-Todas las entradas del usuario se validan con:
-
-```js
-ValidarCaracteresAceptado(entrada, tipo)
-
-Tipos soportados:
-
-'entero'
-
-'decimal'
-
-'alfanumerico'
-
-Además, cada flujo reconoce comandos salir y volver en cualquier punto.
-
-Ticket de venta
-Generado al final del flujo:
-
-Fecha completa
-
-Productos vendidos con subtotales
-
-Total pagado y vuelto
-
-ID de operación
-
-Cómo ejecutar
-npm install
-npm run start
-
-```
