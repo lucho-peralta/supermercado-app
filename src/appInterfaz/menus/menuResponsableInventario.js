@@ -4,10 +4,11 @@ const prompt = promptSync();
 import { IngresarDatosNuevoProducto } from '../usuarioAcciones/agregarProducto.js';
 import { BuscarProductoPorId, BuscarProductoPorCategoria } from '../usuarioAcciones/buscarProducto.js';
 import { mensajes, textoPrompts } from '../../constantes/mensajesYPrompts.js';
-import { AgregarProductoAlStock } from '../../services/productoServices.js';
+import { AgregarProductoAlStock, BuscarProductoPorNombre } from '../../services/productoServices.js';
 import { stockProductos, categoriasProductos } from '../../basesDatos/stockProductos.js';
 import { estructuraMenu } from '../../constantes/contenidoMenu.js';
 import { GenerarYMostrarOpcionesMenu } from '../../utils/opciones.js';
+import { EncontrarProductoPorNombre } from '../usuarioAcciones/buscarProductoPorNombre.js';
 
 export function MenuResponsableInventario(usuarioRol) {
   while (true) {
@@ -93,6 +94,18 @@ export function MenuResponsableInventario(usuarioRol) {
         }
 
         console.log(mensajes.productoPorCategoria, resultadoOpcion);
+        break;
+
+      case '5':
+        resultadoOpcion = EncontrarProductoPorNombre(stockProductos);
+        if (resultadoOpcion === 'salir') {
+          return 'salir';
+        }
+        if (resultadoOpcion === 'volver') {
+          break;
+        }
+
+        console.log('producto encontrado: ', resultadoOpcion);
         break;
 
       default:

@@ -48,7 +48,8 @@ function BuscarIdMayor(listaProductos) {
   } else {
     return listaProductos.reduce((mayorValorId, producto) => {
       const idActual = Number(producto.id);
-      if (mayorValorId > producto.id) {
+      if (mayorValorId > idActual) {
+        // decia producto.id que era sting
         return mayorValorId;
       } else {
         return idActual;
@@ -57,7 +58,7 @@ function BuscarIdMayor(listaProductos) {
   }
 }
 
-export function GenerarListaDeProductosDisponibles(listaProductos, mensajesTexto) {
+export function GenerarListaDeProductosDisponibles(listaProductos) {
   return listaProductos.filter((producto) => producto.stock > 0);
 }
 

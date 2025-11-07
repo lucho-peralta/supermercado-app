@@ -1,4 +1,5 @@
 import { GenerarFecha } from '../utils/generarFecha.js';
+import { ventasRegistradas } from '../basesDatos/ventas.js';
 
 export function GenerarDetalleVenta(productosRegistrados) {
   const idOperacion = GenerarIdVenta(ventasRegistradas);

@@ -9,14 +9,18 @@ import { AplicarPromocion } from '../../services/promocionServices.js';
 
 export function ProcesarVenta(listaProductos, listaPromociones, promptsTexto, mensajesTexto) {
   const resultadoRegistracion = RegistrarProductos(listaProductos, promptsTexto, mensajesTexto);
+
   if (resultadoRegistracion === 'salir' || resultadoRegistracion === 'volver') {
     return resultadoRegistracion;
   }
 
   const productosConPromociones = AplicarPromocion(listaPromociones, resultadoRegistracion);
   const detalleVenta = GenerarDetalleVenta(productosConPromociones);
-  console.log(detalleVenta); //eliminar, funcion bien.
+
+  console.log(detalleVenta); //eliminar, funcion bien. NO lo tomo el push!!
+
   const pago = PedirPago(promptsTexto, mensajesTexto, detalleVenta.totalAPagar);
+
   const vuelto = GenerarVuelto(detalleVenta.totalAPagar, pago);
   const ventaConfirmada = RegistrarVenta(detalleVenta, pago, vuelto);
   const stockActualizado = ActualizarStock(listaProductos, resultadoRegistracion, mensajesTexto);

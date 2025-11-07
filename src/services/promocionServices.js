@@ -37,7 +37,7 @@ function DefinirDatosPromocion(promociones, producto) {
     const porcentaje = promocionCategoria.descuento * 100;
     const montoDescuento = producto.precio * producto.cantidad * promocionCategoria.descuento;
     const descripcion = `Dto x Categoria (${porcentaje}%)`;
-    tienePromocion = true;
+    tienePromocion = true; // esto esta de mas.
 
     datosPromocion = {
       tienePromocion: true,
